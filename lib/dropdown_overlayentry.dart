@@ -58,6 +58,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
   Rect _prevButtonRect;
   Rect _buttonRect;
   bool _isOpen = false;
+  bool get isOpen => _isOpen;
 
   @override
   Widget build(BuildContext context) {
