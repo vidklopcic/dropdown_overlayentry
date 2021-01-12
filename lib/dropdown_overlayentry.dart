@@ -42,7 +42,7 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.repositionDelay = const Duration(milliseconds: 100),
     this.repositionType = DropdownOverlayEntryRepositionType.debounceAnimate,
     this.repositionAnimationDuration = const Duration(milliseconds: 100),
-    this.alignmentOffset = Offset.zero,
+    this.alignmentOffset = const Offset(0, 1),
   }) : super(key: key);
 
   @override

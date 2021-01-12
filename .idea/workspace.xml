@@ -38,9 +38,25 @@
       <option name="presentableId" value="Default" />
       <updated>1610441585365</updated>
     </task>
+    <task id="LOCAL-00001" summary="buttonBuilder -&gt; triggerBuilder">
+      <created>1610460729397</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610460729397</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="buttonBuilder -&gt; triggerBuilder" />
+    <option name="LAST_COMMIT_MESSAGE" value="buttonBuilder -&gt; triggerBuilder" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610460729274">
+      <screen x="1792" y="-29" width="2560" height="1417" />
+    </state>
+    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610460729274" />
     <state width="2518" height="492" key="GridCell.Tab.0.bottom" timestamp="1610454010655">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
@@ -57,6 +73,10 @@
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state width="2518" height="492" key="GridCell.Tab.0.right/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610454010654" />
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610460730800">
+      <screen x="1792" y="-29" width="2560" height="1417" />
+    </state>
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610460730800" />
     <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1610460701381">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
