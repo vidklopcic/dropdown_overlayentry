@@ -8,7 +8,7 @@ typedef DropdownOverlayentryAlignment = Offset Function(Rect buttonRect);
 enum DropdownOverlayEntryRepositionType { debounceAnimate, throttle, always }
 
 class DropdownOverlayEntry extends StatefulWidget {
-  final DropdownOverlayentryButtonBuilder buttonBuilder;
+  final DropdownOverlayentryButtonBuilder triggerBuilder;
   final DropdownOverlayentryBuilder dropdownBuilder;
 
   /// determines whether the dropdown content is rebuilt with the button
@@ -34,7 +34,7 @@ class DropdownOverlayEntry extends StatefulWidget {
 
   const DropdownOverlayEntry({
     Key key,
-    @required this.buttonBuilder,
+    @required this.triggerBuilder,
     @required this.dropdownBuilder,
     this.autoRebuild = true,
     this.autoReposition = true,
@@ -68,7 +68,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         rebuild();
       }
     }
-    return widget.buttonBuilder(context, _buttonKey, _isOpen);
+    return widget.triggerBuilder(context, _buttonKey, _isOpen);
   }
 
   @override

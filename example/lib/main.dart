@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   DropdownOverlayEntry(
                     key: _dropdownOverlayEntry,
-                    buttonBuilder: (context, key, isOpen) => MaterialButton(
+                    triggerBuilder: (context, key, isOpen) => MaterialButton(
                       key: key,
                       onPressed: () => _dropdownOverlayEntry.currentState.toggle(),
                       child: Text(
@@ -75,7 +75,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   DropdownOverlayEntry(
                     key: _dropdownOverlayParentInteractive,
-                    buttonBuilder: (context, key, isOpen) => SizedBox(
+                    triggerBuilder: (context, key, isOpen) => SizedBox(
                       width: 500,
                       child: TextFormField(
                         focusNode: _focusNode,

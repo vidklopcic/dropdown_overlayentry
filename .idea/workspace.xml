@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8c16727-27f2-4c57-b01b-046d0cbaecdf" name="Default Changelist" comment="" />
+    <list default="true" id="c8c16727-27f2-4c57-b01b-046d0cbaecdf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="7.3_Foldable_API_29" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1mxiLPVaqC8aEXKiXEyiz69mY7E" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -34,6 +41,26 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state width="2518" height="492" key="GridCell.Tab.0.bottom" timestamp="1610454010655">
+      <screen x="1792" y="-29" width="2560" height="1417" />
+    </state>
+    <state width="2518" height="492" key="GridCell.Tab.0.bottom/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610454010655" />
+    <state width="2518" height="492" key="GridCell.Tab.0.center" timestamp="1610454010654">
+      <screen x="1792" y="-29" width="2560" height="1417" />
+    </state>
+    <state width="2518" height="492" key="GridCell.Tab.0.center/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610454010654" />
+    <state width="2518" height="492" key="GridCell.Tab.0.left" timestamp="1610454010654">
+      <screen x="1792" y="-29" width="2560" height="1417" />
+    </state>
+    <state width="2518" height="492" key="GridCell.Tab.0.left/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610454010654" />
+    <state width="2518" height="492" key="GridCell.Tab.0.right" timestamp="1610454010654">
+      <screen x="1792" y="-29" width="2560" height="1417" />
+    </state>
+    <state width="2518" height="492" key="GridCell.Tab.0.right/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610454010654" />
+    <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1610460701381">
+      <screen x="1792" y="-29" width="2560" height="1417" />
+    </state>
+    <state x="2724" y="436" width="695" height="486" key="find.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610460701381" />
     <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup" timestamp="1610453599854">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
