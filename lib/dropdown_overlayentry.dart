@@ -58,6 +58,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
   Rect _prevButtonRect;
   Rect _buttonRect;
   bool _isOpen = false;
+
   bool get isOpen => _isOpen;
 
   @override
@@ -69,7 +70,15 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         rebuild();
       }
     }
-    return widget.triggerBuilder(context, _buttonKey, _isOpen);
+    return NotificationListener(
+      onNotification: (SizeChangedLayoutNotification notification) {
+        setState(() {});
+        return true;
+      },
+      child: SizeChangedLayoutNotifier(
+        child: widget.triggerBuilder(context, _buttonKey, _isOpen),
+      ),
+    );
   }
 
   @override
