@@ -72,7 +72,9 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
     }
     return NotificationListener(
       onNotification: (SizeChangedLayoutNotification notification) {
-        setState(() {});
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          setState(() {});
+        });
         return true;
       },
       child: SizeChangedLayoutNotifier(

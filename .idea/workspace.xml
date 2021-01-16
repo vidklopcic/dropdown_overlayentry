@@ -60,20 +60,28 @@
       <option name="project" value="LOCAL" />
       <updated>1610469155533</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add resize listener to handle the case if parent isn't rebuild on resize">
+      <created>1610792348799</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610792348799</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="buttonBuilder -&gt; triggerBuilder" />
     <MESSAGE value="set default offset to 1" />
     <MESSAGE value="add isOpen getter" />
-    <option name="LAST_COMMIT_MESSAGE" value="add isOpen getter" />
+    <MESSAGE value="add resize listener to handle the case if parent isn't rebuild on resize" />
+    <option name="LAST_COMMIT_MESSAGE" value="add resize listener to handle the case if parent isn't rebuild on resize" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610469155433">
+    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610792348670">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610469155433" />
+    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610792348669" />
     <state width="2518" height="492" key="GridCell.Tab.0.bottom" timestamp="1610542059039">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
@@ -90,10 +98,10 @@
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state width="2518" height="492" key="GridCell.Tab.0.right/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610542059039" />
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610469156772">
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610792350312">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610469156772" />
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610792350312" />
     <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1610460701381">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
