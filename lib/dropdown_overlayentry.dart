@@ -63,6 +63,8 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
 
   @override
   Widget build(BuildContext context) {
+    // this ensures that we rebuild on size changes
+    MediaQuery.of(context);
     if (_isOpen) {
       if (widget.autoReposition) {
         updatePosition();
@@ -70,17 +72,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         rebuild();
       }
     }
-    return NotificationListener(
-      onNotification: (SizeChangedLayoutNotification notification) {
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          setState(() {});
-        });
-        return true;
-      },
-      child: SizeChangedLayoutNotifier(
-        child: widget.triggerBuilder(context, _buttonKey, _isOpen),
-      ),
-    );
+    return widget.triggerBuilder(context, _buttonKey, _isOpen);
   }
 
   @override
@@ -149,6 +141,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
     setState(() {
       _isOpen = true;
     });
+    print('open $_isOpen');
   }
 
   void close() {
@@ -156,6 +149,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
     setState(() {
       _isOpen = false;
     });
+    print('open $_isOpen');
   }
 
   Rect _getButtonRect() {

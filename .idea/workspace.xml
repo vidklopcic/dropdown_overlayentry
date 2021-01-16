@@ -26,6 +26,9 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SvnConfiguration">
@@ -67,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610792348799</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix setstate callback">
+      <created>1610793282500</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610793282500</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -75,13 +85,14 @@
     <MESSAGE value="set default offset to 1" />
     <MESSAGE value="add isOpen getter" />
     <MESSAGE value="add resize listener to handle the case if parent isn't rebuild on resize" />
-    <option name="LAST_COMMIT_MESSAGE" value="add resize listener to handle the case if parent isn't rebuild on resize" />
+    <MESSAGE value="fix setstate callback" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix setstate callback" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610792348670">
+    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610795178224">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610792348669" />
+    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610795178224" />
     <state width="2518" height="492" key="GridCell.Tab.0.bottom" timestamp="1610542059039">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
@@ -98,17 +109,21 @@
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state width="2518" height="492" key="GridCell.Tab.0.right/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610542059039" />
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610792350312">
+    <state x="2560" y="261" key="SettingsEditor" timestamp="1610793730758">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610792350312" />
+    <state x="2560" y="261" key="SettingsEditor/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610793730758" />
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610793283792">
+      <screen x="1792" y="-29" width="2560" height="1417" />
+    </state>
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610793283792" />
     <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1610460701381">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2724" y="436" width="695" height="486" key="find.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610460701381" />
-    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup" timestamp="1610453599854">
+    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup" timestamp="1610795199289">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610453599854" />
+    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610795199289" />
   </component>
 </project>
