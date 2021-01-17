@@ -54,7 +54,7 @@ class DropdownOverlayEntry extends StatefulWidget {
 }
 
 class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleTickerProviderStateMixin {
-  static StreamController _closeStreamController = StreamController();
+  static StreamController _closeStreamController = StreamController.broadcast();
 
   AnimationController _repositionAnimationController;
   Tween<Offset> _repositionAnimationTween;
