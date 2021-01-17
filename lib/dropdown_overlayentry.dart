@@ -32,6 +32,9 @@ class DropdownOverlayEntry extends StatefulWidget {
   /// gets added to the default / returned alignment (just a shortcut for simple alignment use-cases)
   final Offset alignmentOffset;
 
+  /// automatically closes this dropdown if other instance is opened
+  final bool closeIfOtherIsOpened;
+
   const DropdownOverlayEntry({
     Key key,
     @required this.triggerBuilder,
@@ -43,6 +46,7 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.repositionType = DropdownOverlayEntryRepositionType.debounceAnimate,
     this.repositionAnimationDuration = const Duration(milliseconds: 100),
     this.alignmentOffset = const Offset(0, 1),
+    this.closeIfOtherIsOpened = true,
   }) : super(key: key);
 
   @override
@@ -50,6 +54,8 @@ class DropdownOverlayEntry extends StatefulWidget {
 }
 
 class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleTickerProviderStateMixin {
+  static StreamController _closeStreamController = StreamController();
+
   AnimationController _repositionAnimationController;
   Tween<Offset> _repositionAnimationTween;
   Animation<Offset> _repositionAnimation;
@@ -58,6 +64,8 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
   Rect _prevButtonRect;
   Rect _buttonRect;
   bool _isOpen = false;
+
+  StreamSubscription _closeSubscription;
 
   bool get isOpen => _isOpen;
 
@@ -88,6 +96,13 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         _repositionAnimationTween = null;
       }
     });
+    _closeSubscription = _closeStreamController.stream.listen(_onOtherOpened);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _closeSubscription.cancel();
   }
 
   @override
@@ -135,6 +150,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
   }
 
   void open() {
+    _closeStreamController.add(null);
     _updatePosition();
     _overlayEntry = OverlayEntry(builder: (context) => _dropdownChild());
     Navigator.of(context).overlay.insert(_overlayEntry);
@@ -202,5 +218,9 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         ),
       ),
     );
+  }
+
+  void _onOtherOpened(_) {
+    if (widget.closeIfOtherIsOpened && isOpen) close();
   }
 }

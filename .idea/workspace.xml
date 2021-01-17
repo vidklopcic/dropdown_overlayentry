@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8c16727-27f2-4c57-b01b-046d0cbaecdf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +28,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SvnConfiguration">
@@ -77,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610793282500</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="rebuild on resize">
+      <created>1610795226399</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610795226399</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -86,37 +93,46 @@
     <MESSAGE value="add isOpen getter" />
     <MESSAGE value="add resize listener to handle the case if parent isn't rebuild on resize" />
     <MESSAGE value="fix setstate callback" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix setstate callback" />
+    <MESSAGE value="rebuild on resize" />
+    <option name="LAST_COMMIT_MESSAGE" value="rebuild on resize" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610795178224">
+    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610795226295">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610795178224" />
-    <state width="2518" height="492" key="GridCell.Tab.0.bottom" timestamp="1610542059039">
-      <screen x="1792" y="-29" width="2560" height="1417" />
+    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610795226295" />
+    <state width="1238" height="492" key="GridCell.Tab.0.bottom" timestamp="1610820949701">
+      <screen x="0" y="23" width="1280" height="697" />
     </state>
+    <state width="1238" height="492" key="GridCell.Tab.0.bottom/0.23.1280.697@0.23.1280.697" timestamp="1610820949701" />
     <state width="2518" height="492" key="GridCell.Tab.0.bottom/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610542059039" />
-    <state width="2518" height="492" key="GridCell.Tab.0.center" timestamp="1610542059038">
-      <screen x="1792" y="-29" width="2560" height="1417" />
+    <state width="1238" height="492" key="GridCell.Tab.0.center" timestamp="1610820949701">
+      <screen x="0" y="23" width="1280" height="697" />
     </state>
+    <state width="1238" height="492" key="GridCell.Tab.0.center/0.23.1280.697@0.23.1280.697" timestamp="1610820949701" />
     <state width="2518" height="492" key="GridCell.Tab.0.center/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610542059038" />
-    <state width="2518" height="492" key="GridCell.Tab.0.left" timestamp="1610542059038">
-      <screen x="1792" y="-29" width="2560" height="1417" />
+    <state width="1238" height="492" key="GridCell.Tab.0.left" timestamp="1610820949701">
+      <screen x="0" y="23" width="1280" height="697" />
     </state>
+    <state width="1238" height="492" key="GridCell.Tab.0.left/0.23.1280.697@0.23.1280.697" timestamp="1610820949701" />
     <state width="2518" height="492" key="GridCell.Tab.0.left/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610542059038" />
-    <state width="2518" height="492" key="GridCell.Tab.0.right" timestamp="1610542059039">
+    <state width="1238" height="492" key="GridCell.Tab.0.right" timestamp="1610820949701">
+      <screen x="0" y="23" width="1280" height="697" />
+    </state>
+    <state width="1238" height="492" key="GridCell.Tab.0.right/0.23.1280.697@0.23.1280.697" timestamp="1610820949701" />
+    <state width="2518" height="492" key="GridCell.Tab.0.right/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610542059039" />
+    <state x="2783" y="397" key="RollbackChangesDialog" timestamp="1610878066070">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state width="2518" height="492" key="GridCell.Tab.0.right/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610542059039" />
+    <state x="2783" y="397" key="RollbackChangesDialog/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610878066070" />
     <state x="2560" y="261" key="SettingsEditor" timestamp="1610793730758">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2560" y="261" key="SettingsEditor/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610793730758" />
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610793283792">
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610795227516">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610793283792" />
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610795227516" />
     <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1610460701381">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
