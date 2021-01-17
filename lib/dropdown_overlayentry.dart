@@ -54,7 +54,7 @@ class DropdownOverlayEntry extends StatefulWidget {
 }
 
 class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleTickerProviderStateMixin {
-  static StreamController _closeStreamController = StreamController.broadcast();
+  static StreamController<GlobalKey> _openedStreamController = StreamController.broadcast();
 
   AnimationController _repositionAnimationController;
   Tween<Offset> _repositionAnimationTween;
@@ -96,7 +96,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         _repositionAnimationTween = null;
       }
     });
-    _closeSubscription = _closeStreamController.stream.listen(_onOtherOpened);
+    _closeSubscription = _openedStreamController.stream.listen(_onOtherOpened);
   }
 
   @override
@@ -150,7 +150,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
   }
 
   void open() {
-    _closeStreamController.add(null);
+    _openedStreamController.add(_buttonKey);
     _updatePosition();
     _overlayEntry = OverlayEntry(builder: (context) => _dropdownChild());
     Navigator.of(context).overlay.insert(_overlayEntry);
@@ -220,7 +220,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
     );
   }
 
-  void _onOtherOpened(_) {
-    if (widget.closeIfOtherIsOpened && isOpen) close();
+  void _onOtherOpened(key) {
+    if (key != _buttonKey && widget.closeIfOtherIsOpened && isOpen) close();
   }
 }
