@@ -105,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610883724072</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="close on dispose">
+      <created>1610912253045</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1610912253045</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -116,13 +123,14 @@
     <MESSAGE value="fix setstate callback" />
     <MESSAGE value="rebuild on resize" />
     <MESSAGE value="add option to automatically close if other is opened" />
-    <option name="LAST_COMMIT_MESSAGE" value="add option to automatically close if other is opened" />
+    <MESSAGE value="close on dispose" />
+    <option name="LAST_COMMIT_MESSAGE" value="close on dispose" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610883723980">
+    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610912252955">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610883723980" />
+    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610912252955" />
     <state width="1238" height="492" key="GridCell.Tab.0.bottom" timestamp="1610820949701">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -151,10 +159,10 @@
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2560" y="261" key="SettingsEditor/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610793730758" />
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610883725284">
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610912254231">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610883725284" />
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610912254231" />
     <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1610900653482">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>

@@ -158,15 +158,14 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
     setState(() {
       _isOpen = true;
     });
-    print('open $_isOpen');
   }
 
   void close() {
     _overlayEntry?.remove();
-    setState(() {
-      _isOpen = false;
-    });
-    print('open $_isOpen');
+    _isOpen = false;
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Rect _getButtonRect() {
