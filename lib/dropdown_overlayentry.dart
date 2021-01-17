@@ -102,6 +102,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
   @override
   void dispose() {
     super.dispose();
+    close();
     _closeSubscription.cancel();
   }
 
