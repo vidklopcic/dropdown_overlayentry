@@ -227,12 +227,15 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
       ),
     );
     if (widget.barrierDismissible) {
-      return GestureDetector(
-        onTap: close,
-        child: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: child,
+      return SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: GestureDetector(
+          onTap: close,
+          child: Material(
+            type: MaterialType.transparency,
+            child: child,
+          ),
         ),
       );
     } else {
