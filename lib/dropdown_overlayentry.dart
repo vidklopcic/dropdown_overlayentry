@@ -2,7 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gm5_utils/gm5_utils.dart';
 
-typedef DropdownOverlayentryButtonBuilder = Widget Function(BuildContext context, GlobalKey key, bool isOpen);
+typedef DropdownOverlayentryButtonBuilder = Widget Function(
+    BuildContext context, GlobalKey key, bool isOpen, VoidCallback toggle);
 typedef DropdownOverlayentryBuilder = Widget Function(BuildContext context, Rect buttonRect);
 typedef DropdownOverlayentryAlignment = Offset Function(Rect buttonRect);
 enum DropdownOverlayEntryRepositionType { debounceAnimate, throttle, always }
@@ -35,6 +36,8 @@ class DropdownOverlayEntry extends StatefulWidget {
   /// automatically closes this dropdown if other instance is opened
   final bool closeIfOtherIsOpened;
 
+  final bool barrierDismissible;
+
   const DropdownOverlayEntry({
     Key key,
     @required this.triggerBuilder,
@@ -47,6 +50,7 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.repositionAnimationDuration = const Duration(milliseconds: 100),
     this.alignmentOffset = const Offset(0, 1),
     this.closeIfOtherIsOpened = true,
+    this.barrierDismissible = false,
   }) : super(key: key);
 
   @override
@@ -80,7 +84,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         rebuild();
       }
     }
-    return widget.triggerBuilder(context, _buttonKey, _isOpen);
+    return widget.triggerBuilder(context, _buttonKey, _isOpen, toggle);
   }
 
   @override
@@ -209,7 +213,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
 
   Widget _dropdownChild() {
     _updateRepositionAnimation();
-    return AnimatedBuilder(
+    Widget child = AnimatedBuilder(
       animation: _repositionAnimationController,
       builder: (context, child) => Padding(
         padding: EdgeInsets.only(top: _repositionAnimation.value.dy, left: _repositionAnimation.value.dx),
@@ -222,6 +226,18 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         ),
       ),
     );
+    if (widget.barrierDismissible) {
+      return GestureDetector(
+        onTap: close,
+        child: SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: child,
+        ),
+      );
+    } else {
+      return child;
+    }
   }
 
   void _onOtherOpened(key) {

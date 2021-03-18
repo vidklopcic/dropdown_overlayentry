@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8c16727-27f2-4c57-b01b-046d0cbaecdf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610912610222</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="prevent repeated calls to open / close">
+      <created>1610912989448</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1610912989449</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -133,13 +141,18 @@
     <MESSAGE value="add option to automatically close if other is opened" />
     <MESSAGE value="close on dispose" />
     <MESSAGE value="check if mounted" />
-    <option name="LAST_COMMIT_MESSAGE" value="check if mounted" />
+    <MESSAGE value="prevent repeated calls to open / close" />
+    <option name="LAST_COMMIT_MESSAGE" value="prevent repeated calls to open / close" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1610912610126">
+    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1616051691822">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610912610126" />
+    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616051691822" />
+    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog" timestamp="1616051703334">
+      <screen x="1792" y="-29" width="2560" height="1417" />
+    </state>
+    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616051703334" />
     <state width="1238" height="492" key="GridCell.Tab.0.bottom" timestamp="1610820949701">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -168,17 +181,17 @@
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2560" y="261" key="SettingsEditor/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610793730758" />
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610912611371">
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1610912990582">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610912611371" />
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610912990582" />
     <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1610900653482">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2724" y="436" width="695" height="486" key="find.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610900653482" />
-    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup" timestamp="1610795199289">
+    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup" timestamp="1615549456451">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610795199289" />
+    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1615549456451" />
   </component>
 </project>
