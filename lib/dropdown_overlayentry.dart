@@ -38,6 +38,8 @@ class DropdownOverlayEntry extends StatefulWidget {
 
   final bool barrierDismissible;
 
+  final Color barrierColor;
+
   const DropdownOverlayEntry({
     Key key,
     @required this.triggerBuilder,
@@ -51,6 +53,7 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.alignmentOffset = const Offset(0, 1),
     this.closeIfOtherIsOpened = true,
     this.barrierDismissible = false,
+    this.barrierColor = Colors.transparent,
   }) : super(key: key);
 
   @override
@@ -220,22 +223,19 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         child: Align(
           alignment: Alignment.topLeft,
           child: Material(
-            type: MaterialType.transparency,
             child: widget.dropdownBuilder(context, _buttonRect),
           ),
         ),
       ),
     );
     if (widget.barrierDismissible) {
-      return SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: GestureDetector(
-          onTap: close,
-          child: Material(
-            type: MaterialType.transparency,
-            child: child,
-          ),
+      return GestureDetector(
+        onTap: close,
+        child: Container(
+          color: widget.barrierColor,
+          width: double.infinity,
+          height: double.infinity,
+          child: child,
         ),
       );
     } else {
