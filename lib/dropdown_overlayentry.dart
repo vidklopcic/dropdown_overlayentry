@@ -162,7 +162,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
     _openedStreamController.add(_buttonKey);
     _updatePosition();
     _overlayEntry = OverlayEntry(builder: (context) => _dropdownChild());
-    Navigator.of(context).overlay.insert(_overlayEntry);
+    Navigator.of(context, rootNavigator: true).overlay.insert(_overlayEntry);
     _isOpen = true;
 
     if (mounted) {

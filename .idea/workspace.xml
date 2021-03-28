@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8c16727-27f2-4c57-b01b-046d0cbaecdf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616052250976</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add barrier color">
+      <created>1616052473745</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1616052473745</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -157,17 +163,18 @@
     <MESSAGE value="prevent repeated calls to open / close" />
     <MESSAGE value="add barrier dismissible and toggle shortcut" />
     <MESSAGE value="fix barrier" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix barrier" />
+    <MESSAGE value="add barrier color" />
+    <option name="LAST_COMMIT_MESSAGE" value="add barrier color" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1616052250867">
+    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1616052473637">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616052250867" />
-    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog" timestamp="1616051703334">
+    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616052473637" />
+    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog" timestamp="1616173490736">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616051703334" />
+    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616173490736" />
     <state width="1238" height="492" key="GridCell.Tab.0.bottom" timestamp="1610820949701">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -196,17 +203,17 @@
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2560" y="261" key="SettingsEditor/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610793730758" />
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1616052252257">
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1616052474984">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616052252257" />
-    <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1610900653482">
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616052474984" />
+    <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1616937338959">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2724" y="436" width="695" height="486" key="find.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610900653482" />
-    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup" timestamp="1615549456451">
+    <state x="2724" y="436" width="695" height="486" key="find.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616937338959" />
+    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup" timestamp="1616937382180">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1615549456451" />
+    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616937382180" />
   </component>
 </project>
