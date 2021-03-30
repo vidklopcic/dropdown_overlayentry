@@ -147,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616052473745</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="get root navigator to avoid offset if there is nested navigator">
+      <created>1616937562193</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1616937562193</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -164,13 +171,14 @@
     <MESSAGE value="add barrier dismissible and toggle shortcut" />
     <MESSAGE value="fix barrier" />
     <MESSAGE value="add barrier color" />
-    <option name="LAST_COMMIT_MESSAGE" value="add barrier color" />
+    <MESSAGE value="get root navigator to avoid offset if there is nested navigator" />
+    <option name="LAST_COMMIT_MESSAGE" value="get root navigator to avoid offset if there is nested navigator" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1616052473637">
+    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1616937562080">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616052473637" />
+    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616937562080" />
     <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog" timestamp="1616173490736">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
@@ -203,17 +211,18 @@
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2560" y="261" key="SettingsEditor/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610793730758" />
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1616052474984">
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1616937563651">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616052474984" />
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616937563651" />
     <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1616937338959">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2724" y="436" width="695" height="486" key="find.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616937338959" />
-    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup" timestamp="1616937382180">
-      <screen x="1792" y="-29" width="2560" height="1417" />
+    <state x="662" y="275" width="670" height="524" key="search.everywhere.popup" timestamp="1617097731413">
+      <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616937382180" />
+    <state x="662" y="275" width="670" height="524" key="search.everywhere.popup/0.23.1792.1097@0.23.1792.1097" timestamp="1617097731413" />
   </component>
 </project>

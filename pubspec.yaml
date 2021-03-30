@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   gm5_utils:
-    git: git@github.com:vidklopcic/gm5_utils.git
+    git: https://github.com/vidklopcic/gm5_utils.git
 
 dev_dependencies:
   flutter_test:
