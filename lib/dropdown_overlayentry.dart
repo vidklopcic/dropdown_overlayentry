@@ -58,8 +58,7 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.barrierDismissible = false,
     this.barrierColor = Colors.transparent,
     this.behindTrigger = false,
-  })  : assert(behindTrigger == false || alignment == null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   DropdownOverlayEntryState createState() => DropdownOverlayEntryState();
