@@ -105,7 +105,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
       _triggerConstraints = constraints;
       _trigger = KeyedSubtree(
         key: _triggerTree,
-        child: trigger,
+        child: Material(type: MaterialType.transparency, child: trigger),
       );
 
       if (isOpen)
@@ -147,6 +147,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
 
   void rebuild() {
     _overlayEntry?.markNeedsBuild();
+    setState(() {});
   }
 
   void updatePosition() {
@@ -274,8 +275,12 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
           Positioned(
             top: _repositionAnimation.value.dy,
             left: _repositionAnimation.value.dx,
-            child: Material(
-              child: widget.dropdownBuilder(context, _buttonRect),
+            child: GestureDetector(
+              onTap: () {},
+              child: Material(
+                type: MaterialType.transparency,
+                child: widget.dropdownBuilder(context, _buttonRect),
+              ),
             ),
           ),
           widget.behindTrigger

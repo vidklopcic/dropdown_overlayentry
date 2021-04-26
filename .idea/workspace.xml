@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8c16727-27f2-4c57-b01b-046d0cbaecdf" name="Default Changelist" comment="">
+    <list default="true" id="c8c16727-27f2-4c57-b01b-046d0cbaecdf" name="Default Changelist" comment="remove deprecated assertion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" afterDir="false" />
     </list>
@@ -169,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618304397983</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="remove deprecated assertion">
+      <created>1618306892709</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1618306892709</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -189,18 +196,19 @@
     <MESSAGE value="get root navigator to avoid offset if there is nested navigator" />
     <MESSAGE value="use https access for public git repos" />
     <MESSAGE value="added option to overlay trigger on top of the dropdown" />
-    <option name="LAST_COMMIT_MESSAGE" value="added option to overlay trigger on top of the dropdown" />
+    <MESSAGE value="remove deprecated assertion" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove deprecated assertion" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2649" y="282" key="CommitChangelistDialog2" timestamp="1618304397873">
+    <state x="600" y="264" key="CommitChangelistDialog2" timestamp="1618672288409">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1618306892591" />
+    <state x="600" y="264" key="CommitChangelistDialog2/0.23.1792.1097@0.23.1792.1097" timestamp="1618672288409" />
+    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog" timestamp="1618566523535">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2649" y="282" key="CommitChangelistDialog2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1618304397873" />
-    <state x="600" y="264" key="CommitChangelistDialog2/0.23.1792.1097@0.23.1792.1097" timestamp="1617097755232" />
-    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog" timestamp="1616173490736">
-      <screen x="1792" y="-29" width="2560" height="1417" />
-    </state>
-    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616173490736" />
+    <state x="1892" y="71" width="2360" height="1217" key="DiffContextDialog/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1618566523535" />
     <state width="1238" height="492" key="GridCell.Tab.0.bottom" timestamp="1610820949701">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -221,27 +229,28 @@
     </state>
     <state width="1238" height="492" key="GridCell.Tab.0.right/0.23.1280.697@0.23.1280.697" timestamp="1610820949701" />
     <state width="2518" height="492" key="GridCell.Tab.0.right/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610542059039" />
-    <state x="2783" y="397" key="RollbackChangesDialog" timestamp="1610878066070">
+    <state x="2783" y="397" key="RollbackChangesDialog" timestamp="1618566523881">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2783" y="397" key="RollbackChangesDialog/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610878066070" />
+    <state x="2783" y="397" key="RollbackChangesDialog/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1618566523881" />
     <state x="2560" y="261" key="SettingsEditor" timestamp="1610793730758">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2560" y="261" key="SettingsEditor/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1610793730758" />
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1618304399382">
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2" timestamp="1618306893909">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
-    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1618304399382" />
+    <state x="2672" y="419" key="Vcs.Push.Dialog.v2/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1618306893909" />
     <state x="616" y="370" key="Vcs.Push.Dialog.v2/0.23.1792.1097@0.23.1792.1097" timestamp="1617097756555" />
     <state x="2724" y="436" width="695" height="486" key="find.popup" timestamp="1616937338959">
       <screen x="1792" y="-29" width="2560" height="1417" />
     </state>
     <state x="2724" y="436" width="695" height="486" key="find.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616937338959" />
-    <state x="662" y="275" width="670" height="524" key="search.everywhere.popup" timestamp="1617097731413">
-      <screen x="0" y="23" width="1792" height="1097" />
+    <state x="945" y="-1092" width="670" height="676" key="search.everywhere.popup" timestamp="1618673697797">
+      <screen x="0" y="-1417" width="2560" height="1417" />
     </state>
-    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1616937382180" />
+    <state x="945" y="-1092" width="670" height="676" key="search.everywhere.popup/0.-1417.2560.1417/0.23.1792.1097@0.-1417.2560.1417" timestamp="1618673697797" />
+    <state x="2737" y="296" width="670" height="676" key="search.everywhere.popup/0.23.1792.1097/1792.-29.2560.1417@1792.-29.2560.1417" timestamp="1618565800834" />
     <state x="662" y="275" width="670" height="524" key="search.everywhere.popup/0.23.1792.1097@0.23.1792.1097" timestamp="1617097731413" />
   </component>
 </project>
