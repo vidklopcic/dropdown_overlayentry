@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8c16727-27f2-4c57-b01b-046d0cbaecdf" name="Default Changelist" comment="remove deprecated assertion">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -30,6 +30,10 @@ class DropdownOverlayEntry extends StatefulWidget {
   /// returns the offset relative to the top left corner of the button rect (if null, it aligns to the bottom left corner)
   final DropdownOverlayentryAlignment alignment;
 
+  /// returns the offset relative to the top left corner of the button rect (if null, it aligns to the bottom left corner)
+  /// this will effectively shift the trigger when opened, if `behindTrigger` is true
+  final DropdownOverlayentryAlignment openTriggerAlignment;
+
   /// gets added to the default / returned alignment (just a shortcut for simple alignment use-cases)
   final Offset alignmentOffset;
 
@@ -50,6 +54,7 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.autoRebuild = true,
     this.autoReposition = true,
     this.alignment,
+    this.openTriggerAlignment,
     this.repositionDelay = const Duration(milliseconds: 100),
     this.repositionType = DropdownOverlayEntryRepositionType.throttle,
     this.repositionAnimationDuration = const Duration(milliseconds: 100),
@@ -58,7 +63,8 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.barrierDismissible = false,
     this.barrierColor = Colors.transparent,
     this.behindTrigger = false,
-  }) : super(key: key);
+  })  : assert(openTriggerAlignment == null || behindTrigger),
+        super(key: key);
 
   @override
   DropdownOverlayEntryState createState() => DropdownOverlayEntryState();
@@ -146,7 +152,12 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
   }
 
   void rebuild() {
-    _overlayEntry?.markNeedsBuild();
+    if (!widget.autoReposition && !widget.autoRebuild) {
+      _overlayEntry?.markNeedsBuild();
+    } else if (!widget.autoReposition) {
+      updatePosition();
+    }
+
     setState(() {});
   }
 
@@ -156,6 +167,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
       rebuild();
     };
     if (widget.behindTrigger) {
+      // we neet two rebuilds to 1) get new position of the trigger and 2) reposition the dropdown
       update = () {
         _updatePosition();
         rebuild();
@@ -268,6 +280,11 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
 
   Widget _dropdownChild() {
     _updateRepositionAnimation();
+    Offset triggerAlignmentOffset = Offset(0, 0);
+    if (widget.openTriggerAlignment != null) {
+      triggerAlignmentOffset = widget.openTriggerAlignment(_triggerRect);
+    }
+
     Widget child = AnimatedBuilder(
       animation: _repositionAnimationController,
       builder: (context, child) => Stack(
@@ -285,8 +302,8 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
           ),
           widget.behindTrigger
               ? Positioned(
-                  top: _triggerRect.top,
-                  left: _triggerRect.left,
+                  top: _triggerRect.top + triggerAlignmentOffset.dy,
+                  left: _triggerRect.left + triggerAlignmentOffset.dx,
                   child: ConstrainedBox(
                     constraints: _triggerConstraints,
                     child: _trigger,
