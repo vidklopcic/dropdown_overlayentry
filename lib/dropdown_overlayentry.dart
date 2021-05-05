@@ -63,7 +63,8 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.barrierDismissible = false,
     this.barrierColor = Colors.transparent,
     this.behindTrigger = false,
-  })  : assert(openTriggerAlignment == null || behindTrigger),
+  })
+      : assert(openTriggerAlignment == null || behindTrigger),
         super(key: key);
 
   @override
@@ -164,16 +165,16 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
   void updatePosition() {
     VoidCallback update = () {
       _updatePosition();
-      rebuild();
+      _overlayEntry?.markNeedsBuild();
     };
     if (widget.behindTrigger) {
       // we neet two rebuilds to 1) get new position of the trigger and 2) reposition the dropdown
       update = () {
         _updatePosition();
-        rebuild();
+        _overlayEntry?.markNeedsBuild();
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           _updatePosition();
-          rebuild();
+          _overlayEntry?.markNeedsBuild();
           setState(() {
             _updateTriggerConstraints = true;
           });
@@ -216,7 +217,10 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
     _openedStreamController.add(_buttonKey);
     _updatePosition();
     _overlayEntry = OverlayEntry(builder: (context) => _dropdownChild());
-    Navigator.of(context, rootNavigator: true).overlay.insert(_overlayEntry);
+    Navigator
+        .of(context, rootNavigator: true)
+        .overlay
+        .insert(_overlayEntry);
     _isOpen = true;
 
     if (mounted) {
@@ -287,31 +291,32 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
 
     Widget child = AnimatedBuilder(
       animation: _repositionAnimationController,
-      builder: (context, child) => Stack(
-        children: [
-          Positioned(
-            top: _repositionAnimation.value.dy,
-            left: _repositionAnimation.value.dx,
-            child: GestureDetector(
-              onTap: () {},
-              child: Material(
-                type: MaterialType.transparency,
-                child: widget.dropdownBuilder(context, _buttonRect),
-              ),
-            ),
-          ),
-          widget.behindTrigger
-              ? Positioned(
-                  top: _triggerRect.top + triggerAlignmentOffset.dy,
-                  left: _triggerRect.left + triggerAlignmentOffset.dx,
-                  child: ConstrainedBox(
-                    constraints: _triggerConstraints,
-                    child: _trigger,
+      builder: (context, child) =>
+          Stack(
+            children: [
+              Positioned(
+                top: _repositionAnimation.value.dy,
+                left: _repositionAnimation.value.dx,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: widget.dropdownBuilder(context, _buttonRect),
                   ),
-                )
-              : Offstage()
-        ],
-      ),
+                ),
+              ),
+              widget.behindTrigger
+                  ? Positioned(
+                top: _triggerRect.top + triggerAlignmentOffset.dy,
+                left: _triggerRect.left + triggerAlignmentOffset.dx,
+                child: ConstrainedBox(
+                  constraints: _triggerConstraints,
+                  child: _trigger,
+                ),
+              )
+                  : Offstage()
+            ],
+          ),
     );
     if (widget.barrierDismissible) {
       return GestureDetector(
