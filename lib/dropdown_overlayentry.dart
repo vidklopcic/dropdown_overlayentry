@@ -63,15 +63,15 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.barrierDismissible = false,
     this.barrierColor = Colors.transparent,
     this.behindTrigger = false,
-  })
-      : assert(openTriggerAlignment == null || behindTrigger),
+  })  : assert(openTriggerAlignment == null || behindTrigger),
         super(key: key);
 
   @override
   DropdownOverlayEntryState createState() => DropdownOverlayEntryState();
 }
 
-class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleTickerProviderStateMixin {
+class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
+    with SingleTickerProviderStateMixin {
   static StreamController<GlobalKey> _openedStreamController = StreamController.broadcast();
   GlobalKey _triggerTree = GlobalKey();
   AnimationController _repositionAnimationController;
@@ -159,7 +159,9 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
       updatePosition();
     }
 
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   void updatePosition() {
@@ -175,19 +177,23 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           _updatePosition();
           _overlayEntry?.markNeedsBuild();
-          setState(() {
-            _updateTriggerConstraints = true;
-          });
+          if (mounted) {
+            setState(() {
+              _updateTriggerConstraints = true;
+            });
+          }
         });
       };
     }
 
     switch (widget.repositionType) {
       case DropdownOverlayEntryRepositionType.debounceAnimate:
-        gm5Utils.eventUtils.debounce(widget.repositionDelay.inMilliseconds, update, key: _buttonKey);
+        gm5Utils.eventUtils
+            .debounce(widget.repositionDelay.inMilliseconds, update, key: _buttonKey);
         break;
       case DropdownOverlayEntryRepositionType.throttle:
-        gm5Utils.eventUtils.throttle(widget.repositionDelay.inMilliseconds, update, key: _buttonKey);
+        gm5Utils.eventUtils
+            .throttle(widget.repositionDelay.inMilliseconds, update, key: _buttonKey);
         break;
       case DropdownOverlayEntryRepositionType.always:
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -217,10 +223,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
     _openedStreamController.add(_buttonKey);
     _updatePosition();
     _overlayEntry = OverlayEntry(builder: (context) => _dropdownChild());
-    Navigator
-        .of(context, rootNavigator: true)
-        .overlay
-        .insert(_overlayEntry);
+    Navigator.of(context, rootNavigator: true).overlay.insert(_overlayEntry);
     _isOpen = true;
 
     if (mounted) {
@@ -271,7 +274,8 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
     Offset alignment = _getAlignmentForRect(_buttonRect);
     if (widget.repositionType == DropdownOverlayEntryRepositionType.debounceAnimate) {
       Offset prevAlignment = _getAlignmentForRect(_prevButtonRect ?? _buttonRect);
-      _repositionAnimationTween = Tween(begin: _repositionAnimationTween?.begin ?? prevAlignment, end: alignment);
+      _repositionAnimationTween =
+          Tween(begin: _repositionAnimationTween?.begin ?? prevAlignment, end: alignment);
       _repositionAnimation = _repositionAnimationTween.animate(_repositionAnimationController);
       if (!_repositionAnimationController.isAnimating && alignment != prevAlignment) {
         _repositionAnimationController.duration = Duration(milliseconds: 100);
@@ -291,32 +295,31 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry> with SingleT
 
     Widget child = AnimatedBuilder(
       animation: _repositionAnimationController,
-      builder: (context, child) =>
-          Stack(
-            children: [
-              Positioned(
-                top: _repositionAnimation.value.dy,
-                left: _repositionAnimation.value.dx,
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Material(
-                    type: MaterialType.transparency,
-                    child: widget.dropdownBuilder(context, _buttonRect),
-                  ),
-                ),
+      builder: (context, child) => Stack(
+        children: [
+          Positioned(
+            top: _repositionAnimation.value.dy,
+            left: _repositionAnimation.value.dx,
+            child: GestureDetector(
+              onTap: () {},
+              child: Material(
+                type: MaterialType.transparency,
+                child: widget.dropdownBuilder(context, _buttonRect),
               ),
-              widget.behindTrigger
-                  ? Positioned(
-                top: _triggerRect.top + triggerAlignmentOffset.dy,
-                left: _triggerRect.left + triggerAlignmentOffset.dx,
-                child: ConstrainedBox(
-                  constraints: _triggerConstraints,
-                  child: _trigger,
-                ),
-              )
-                  : Offstage()
-            ],
+            ),
           ),
+          widget.behindTrigger
+              ? Positioned(
+                  top: _triggerRect.top + triggerAlignmentOffset.dy,
+                  left: _triggerRect.left + triggerAlignmentOffset.dx,
+                  child: ConstrainedBox(
+                    constraints: _triggerConstraints,
+                    child: _trigger,
+                  ),
+                )
+              : Offstage()
+        ],
+      ),
     );
     if (widget.barrierDismissible) {
       return GestureDetector(
