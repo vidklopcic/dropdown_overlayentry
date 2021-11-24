@@ -11,8 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  gm5_utils:
-    git: https://github.com/vidklopcic/gm5_utils.git
 
 dev_dependencies:
   flutter_test:
@@ -27,13 +25,6 @@ flutter:
   # The 'pluginClass' and Android 'package' identifiers should not ordinarily
   # be modified. They are used by the tooling to maintain consistency when
   # adding or updating assets for this project.
-  plugin:
-    platforms:
-      android:
-        package: solutions.gm5.dropdown_overlayentry
-        pluginClass: DropdownOverlayentryPlugin
-      ios:
-        pluginClass: DropdownOverlayentryPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
