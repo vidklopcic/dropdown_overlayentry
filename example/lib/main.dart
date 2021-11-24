@@ -60,8 +60,8 @@ class _MyAppState extends State<MyApp> {
                       );
                     },
                   ),
-                  OptimalInteractiveContent(),
-                  AutoInteractiveContent(),
+                  OptimalDynamicContent(),
+                  AutoDynamicContent(),
                   Container(
                     width: 500,
                     height: 600,
@@ -78,31 +78,31 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class OptimalInteractiveContent extends StatefulWidget {
-  const OptimalInteractiveContent({Key? key}) : super(key: key);
+class OptimalDynamicContent extends StatefulWidget {
+  const OptimalDynamicContent({Key? key}) : super(key: key);
 
   @override
-  State<OptimalInteractiveContent> createState() => _OptimalInteractiveContentState();
+  State<OptimalDynamicContent> createState() => _OptimalDynamicContentState();
 }
 
-class _OptimalInteractiveContentState extends State<OptimalInteractiveContent> {
-  GlobalKey<DropdownOverlayEntryState> _dropdownOverlayParentInteractive = GlobalKey();
+class _OptimalDynamicContentState extends State<OptimalDynamicContent> {
+  GlobalKey<DropdownOverlayEntryState> _dropdownOverlayParentDynamic = GlobalKey();
   int nItems = 0;
   FocusNode _focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
     return DropdownOverlayEntry(
-      key: _dropdownOverlayParentInteractive,
+      key: _dropdownOverlayParentDynamic,
       triggerBuilder: (context, key, isOpen, toggle) => SizedBox(
         width: 500,
         child: TextFormField(
           focusNode: _focusNode,
           key: key,
-          onChanged: _updateInteractiveContent,
+          onChanged: _updateDynamicContent,
           inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
           decoration: InputDecoration(
-            labelText: 'Optimal Interactive Content',
+            labelText: 'Optimal Dynamic Content',
           ),
         ),
       ),
@@ -129,9 +129,9 @@ class _OptimalInteractiveContentState extends State<OptimalInteractiveContent> {
     );
   }
 
-  void _updateInteractiveContent(String text) {
+  void _updateDynamicContent(String text) {
     nItems = int.tryParse(text) ?? nItems;
-    _dropdownOverlayParentInteractive.currentState!.rebuild();
+    _dropdownOverlayParentDynamic.currentState!.rebuild();
   }
 
   @override
@@ -139,9 +139,9 @@ class _OptimalInteractiveContentState extends State<OptimalInteractiveContent> {
     super.initState();
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) {
-        _dropdownOverlayParentInteractive.currentState!.open();
+        _dropdownOverlayParentDynamic.currentState!.open();
       } else {
-        _dropdownOverlayParentInteractive.currentState!.close();
+        _dropdownOverlayParentDynamic.currentState!.close();
       }
     });
   }
@@ -153,14 +153,14 @@ class _OptimalInteractiveContentState extends State<OptimalInteractiveContent> {
   }
 }
 
-class AutoInteractiveContent extends StatefulWidget {
-  const AutoInteractiveContent({Key? key}) : super(key: key);
+class AutoDynamicContent extends StatefulWidget {
+  const AutoDynamicContent({Key? key}) : super(key: key);
 
   @override
-  State<AutoInteractiveContent> createState() => _AutoInteractiveContentState();
+  State<AutoDynamicContent> createState() => _AutoDynamicContentState();
 }
 
-class _AutoInteractiveContentState extends State<AutoInteractiveContent> {
+class _AutoDynamicContentState extends State<AutoDynamicContent> {
   int nItems = 0;
   FocusNode _focusNode = FocusNode();
 
@@ -173,10 +173,10 @@ class _AutoInteractiveContentState extends State<AutoInteractiveContent> {
         child: TextFormField(
           focusNode: _focusNode,
           key: key,
-          onChanged: _updateInteractiveContent,
+          onChanged: _updateDynamicContent,
           inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
           decoration: InputDecoration(
-            labelText: 'Auto Interactive Content',
+            labelText: 'Auto Dynamic Content',
           ),
         ),
       ),
@@ -203,7 +203,7 @@ class _AutoInteractiveContentState extends State<AutoInteractiveContent> {
     );
   }
 
-  void _updateInteractiveContent(String text) {
+  void _updateDynamicContent(String text) {
     setState(() {
       nItems = int.tryParse(text) ?? nItems;
     });
@@ -246,7 +246,7 @@ class _ScrollViewSampleState extends State<ScrollViewSample> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'scroll demo',
+                'scroll + draw behind trigger',
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
@@ -256,20 +256,21 @@ class _ScrollViewSampleState extends State<ScrollViewSample> {
               alignment: Alignment.topCenter,
               child: DropdownOverlayEntry(
                 scrollController: _scrollController,
+                behindTrigger: true,
                 alignment: (buttonRect) {
                   final fromTop = buttonRect.top - _containerRect!.top;
                   if (fromTop < 0) {
                     DropdownOverlayEntry.closeAll();
                   }
                   if (fromTop < _containerRect!.height / 2) {
-                    return Offset(0, buttonRect.height);
+                    return Offset(-8, -8);
                   } else {
-                    return Offset(0, -300);
+                    return Offset(-8, -300 + buttonRect.height + 8);
                   }
                 },
                 dropdownBuilder: (context, buttonRect) => IgnorePointer(
                   child: Container(
-                    width: buttonRect.width,
+                    width: buttonRect.width + 16,
                     height: 300,
                     decoration: BoxDecoration(
                       color: Colors.white,
