@@ -28,11 +28,11 @@ class DropdownOverlayEntry extends StatefulWidget {
   final Duration repositionAnimationDuration;
 
   /// returns the offset relative to the top left corner of the button rect (if null, it aligns to the bottom left corner)
-  final DropdownOverlayentryAlignment alignment;
+  final DropdownOverlayentryAlignment? alignment;
 
   /// returns the offset relative to the top left corner of the button rect (if null, it aligns to the bottom left corner)
   /// this will effectively shift the trigger when opened, if `behindTrigger` is true
-  final DropdownOverlayentryAlignment openTriggerAlignment;
+  final DropdownOverlayentryAlignment? openTriggerAlignment;
 
   /// gets added to the default / returned alignment (just a shortcut for simple alignment use-cases)
   final Offset alignmentOffset;
@@ -48,9 +48,9 @@ class DropdownOverlayEntry extends StatefulWidget {
   final Color barrierColor;
 
   const DropdownOverlayEntry({
-    Key key,
-    @required this.triggerBuilder,
-    @required this.dropdownBuilder,
+    Key? key,
+    required this.triggerBuilder,
+    required this.dropdownBuilder,
     this.autoRebuild = true,
     this.autoReposition = true,
     this.alignment,
@@ -74,20 +74,20 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
     with SingleTickerProviderStateMixin {
   static StreamController<GlobalKey> _openedStreamController = StreamController.broadcast();
   GlobalKey _triggerTree = GlobalKey();
-  AnimationController _repositionAnimationController;
-  Tween<Offset> _repositionAnimationTween;
-  Animation<Offset> _repositionAnimation;
+  late AnimationController _repositionAnimationController;
+  Tween<Offset>? _repositionAnimationTween;
+  late Animation<Offset> _repositionAnimation;
   GlobalKey _buttonKey = GlobalKey();
-  OverlayEntry _overlayEntry;
-  Rect _prevButtonRect;
-  Rect _buttonRect;
-  Rect _triggerRect;
+  OverlayEntry? _overlayEntry;
+  Rect? _prevButtonRect;
+  Rect? _buttonRect;
+  Rect? _triggerRect;
   bool _isOpen = false;
-  Widget _trigger;
-  BoxConstraints _triggerConstraints;
+  Widget? _trigger;
+  late BoxConstraints _triggerConstraints;
   bool _updateTriggerConstraints = false;
 
-  StreamSubscription _closeSubscription;
+  late StreamSubscription _closeSubscription;
 
   bool get isOpen => _isOpen;
 
@@ -117,10 +117,10 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
 
       if (isOpen)
         return SizedBox(
-          width: _triggerRect.width,
-          height: _triggerRect.height,
+          width: _triggerRect!.width,
+          height: _triggerRect!.height,
         );
-      return _trigger;
+      return _trigger!;
     });
   }
 
@@ -159,7 +159,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
       updatePosition();
     }
 
-    if (mounted) {
+    if (mounted && !widget.autoRebuild) {
       setState(() {});
     }
   }
@@ -174,7 +174,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
       update = () {
         _updatePosition();
         _overlayEntry?.markNeedsBuild();
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
           _updatePosition();
           _overlayEntry?.markNeedsBuild();
           if (mounted) {
@@ -196,7 +196,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
             .throttle(widget.repositionDelay.inMilliseconds, update, key: _buttonKey);
         break;
       case DropdownOverlayEntryRepositionType.always:
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
           update();
         });
         break;
@@ -223,7 +223,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
     _openedStreamController.add(_buttonKey);
     _updatePosition();
     _overlayEntry = OverlayEntry(builder: (context) => _dropdownChild());
-    Navigator.of(context, rootNavigator: true).overlay.insert(_overlayEntry);
+    Navigator.of(context, rootNavigator: true).overlay!.insert(_overlayEntry!);
     _isOpen = true;
 
     if (mounted) {
@@ -241,8 +241,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
   }
 
   Rect _getButtonRect() {
-    RenderObject renderObject = _buttonKey.currentContext?.findRenderObject();
-    assert(renderObject != null);
+    RenderObject renderObject = _buttonKey.currentContext!.findRenderObject()!;
     assert(renderObject.attached);
     RenderBox box = (renderObject as RenderBox);
     Offset topLeft = box.localToGlobal(Offset.zero);
@@ -251,8 +250,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
   }
 
   Rect _getTriggerRect() {
-    RenderObject renderObject = _triggerTree.currentContext?.findRenderObject();
-    assert(renderObject != null);
+    RenderObject renderObject = _triggerTree.currentContext!.findRenderObject()!;
     assert(renderObject.attached);
     RenderBox box = (renderObject as RenderBox);
     Offset topLeft = box.localToGlobal(Offset.zero);
@@ -263,7 +261,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
   Offset _getAlignmentForRect(Rect rect) {
     Offset alignment = Offset(0, widget.behindTrigger ? 0 : rect.height);
     if (widget.alignment != null) {
-      alignment = widget.alignment(rect) ?? alignment;
+      alignment = widget.alignment!(rect);
     }
     alignment += rect.topLeft;
     alignment += widget.alignmentOffset;
@@ -271,12 +269,12 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
   }
 
   void _updateRepositionAnimation() {
-    Offset alignment = _getAlignmentForRect(_buttonRect);
+    Offset alignment = _getAlignmentForRect(_buttonRect!);
     if (widget.repositionType == DropdownOverlayEntryRepositionType.debounceAnimate) {
-      Offset prevAlignment = _getAlignmentForRect(_prevButtonRect ?? _buttonRect);
+      Offset prevAlignment = _getAlignmentForRect(_prevButtonRect ?? _buttonRect!);
       _repositionAnimationTween =
           Tween(begin: _repositionAnimationTween?.begin ?? prevAlignment, end: alignment);
-      _repositionAnimation = _repositionAnimationTween.animate(_repositionAnimationController);
+      _repositionAnimation = _repositionAnimationTween!.animate(_repositionAnimationController);
       if (!_repositionAnimationController.isAnimating && alignment != prevAlignment) {
         _repositionAnimationController.duration = Duration(milliseconds: 100);
         _repositionAnimationController.forward(from: 0);
@@ -290,7 +288,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
     _updateRepositionAnimation();
     Offset triggerAlignmentOffset = Offset(0, 0);
     if (widget.openTriggerAlignment != null) {
-      triggerAlignmentOffset = widget.openTriggerAlignment(_triggerRect);
+      triggerAlignmentOffset = widget.openTriggerAlignment!(_triggerRect!);
     }
 
     Widget child = AnimatedBuilder(
@@ -304,14 +302,14 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
               onTap: () {},
               child: Material(
                 type: MaterialType.transparency,
-                child: widget.dropdownBuilder(context, _buttonRect),
+                child: widget.dropdownBuilder(context, _buttonRect!),
               ),
             ),
           ),
           widget.behindTrigger
               ? Positioned(
-                  top: _triggerRect.top + triggerAlignmentOffset.dy,
-                  left: _triggerRect.left + triggerAlignmentOffset.dx,
+                  top: _triggerRect!.top + triggerAlignmentOffset.dy,
+                  left: _triggerRect!.left + triggerAlignmentOffset.dx,
                   child: ConstrainedBox(
                     constraints: _triggerConstraints,
                     child: _trigger,

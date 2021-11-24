@@ -22,9 +22,9 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) {
-        _dropdownOverlayParentInteractive.currentState.open();
+        _dropdownOverlayParentInteractive.currentState!.open();
       } else {
-        _dropdownOverlayParentInteractive.currentState.close();
+        _dropdownOverlayParentInteractive.currentState!.close();
       }
     });
   }
@@ -51,11 +51,13 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   DropdownOverlayEntry(
                     key: _dropdownOverlayEntry,
+                    repositionType: DropdownOverlayEntryRepositionType.debounceAnimate,
                     triggerBuilder: (context, key, isOpen, toggle) => MaterialButton(
                       key: key,
-                      onPressed: () => _dropdownOverlayEntry.currentState.toggle(),
+                      onPressed: () => _dropdownOverlayEntry.currentState!.toggle(),
                       child: Text(
                         'Button is ${isOpen ? 'open' : 'closed'}',
+                        style: TextStyle(color: Colors.white),
                       ),
                       color: Colors.blue,
                       minWidth: context.width * 0.5,
@@ -104,6 +106,11 @@ class _MyAppState extends State<MyApp> {
                       );
                     },
                   ),
+                  SizedBox(
+                    width: 500,
+                    height: 600,
+                    child: ScrollViewSample(),
+                  ),
                 ],
               ),
             ),
@@ -115,6 +122,46 @@ class _MyAppState extends State<MyApp> {
 
   void _updateInteractiveContent(String text) {
     nItems = int.tryParse(text) ?? nItems;
-    _dropdownOverlayParentInteractive.currentState.rebuild();
+    _dropdownOverlayParentInteractive.currentState!.rebuild();
+  }
+}
+
+class ScrollViewSample extends StatelessWidget {
+  const ScrollViewSample({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(border: Border.all()),
+      child: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 500),
+          height: 2000,
+          alignment: Alignment.topCenter,
+          child: DropdownOverlayEntry(
+            dropdownBuilder: (context, rect) => Container(
+              width: rect.width,
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(color: Colors.black26, blurRadius: 10),
+                ],
+              ),
+            ),
+            triggerBuilder: (context, key, isOpen, toggle) => MaterialButton(
+              key: key,
+              onPressed: toggle,
+              child: Text(
+                'Button is ${isOpen ? 'open' : 'closed'}',
+                style: TextStyle(color: Colors.white),
+              ),
+              color: Colors.green,
+              minWidth: context.width * 0.5,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
