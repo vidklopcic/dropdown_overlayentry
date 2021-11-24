@@ -281,7 +281,6 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
   Rect _getButtonRect() {
     buttonRO ??= _buttonKey.currentContext!.findRenderObject()!;
     assert(buttonRO!.attached);
-    if (buttonRO!.paintBounds.isEmpty) close();
     RenderBox box = (buttonRO as RenderBox);
     Offset topLeft = box.localToGlobal(Offset.zero);
     Offset bottomRight = topLeft + box.size.bottomRight(Offset.zero);
@@ -392,5 +391,6 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
     _buttonRect = _buttonRect?.translate(dOffset.dx, dOffset.dy);
     _triggerRect = _triggerRect?.translate(dOffset.dx, dOffset.dy);
     _overlayEntry?.markNeedsBuild();
+    if (buttonRO!.paintBounds.isEmpty) close();
   }
 }

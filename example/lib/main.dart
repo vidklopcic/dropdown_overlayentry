@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_overlayentry/dropdown_overlayentry.dart';
 import 'package:flutter/services.dart';
-import 'package:gm5_utils/extended_functionality/context.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,8 +44,8 @@ class _MyAppState extends State<MyApp> {
                         'Button is ${isOpen ? 'open' : 'closed'}',
                         style: TextStyle(color: Colors.white),
                       ),
-                      color: Colors.blue,
-                      minWidth: context.width * 0.5,
+                      color: Colors.green,
+                      minWidth: MediaQuery.of(context).size.width * 0.5,
                     ),
                     dropdownBuilder: (context, buttonRect) {
                       return Container(
@@ -231,10 +231,13 @@ class ScrollViewSample extends StatefulWidget {
 
 class _ScrollViewSampleState extends State<ScrollViewSample> {
   ScrollController _scrollController = ScrollController();
+  GlobalKey _container = GlobalKey();
+  Rect? _containerRect;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: _container,
       decoration: BoxDecoration(border: Border.all()),
       child: SingleChildScrollView(
         controller: _scrollController,
@@ -244,18 +247,29 @@ class _ScrollViewSampleState extends State<ScrollViewSample> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'scroll demo',
-                style: context.textTheme.headline6,
+                style: Theme.of(context).textTheme.headline6,
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 250),
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 500),
               height: 2000,
               alignment: Alignment.topCenter,
               child: DropdownOverlayEntry(
                 scrollController: _scrollController,
-                dropdownBuilder: (context, rect) => IgnorePointer(
+                alignment: (buttonRect) {
+                  final fromTop = buttonRect.top - _containerRect!.top;
+                  if (fromTop < 0) {
+                    DropdownOverlayEntry.closeAll();
+                  }
+                  if (fromTop < _containerRect!.height / 2) {
+                    return Offset(0, buttonRect.height);
+                  } else {
+                    return Offset(0, -300);
+                  }
+                },
+                dropdownBuilder: (context, buttonRect) => IgnorePointer(
                   child: Container(
-                    width: rect.width,
+                    width: buttonRect.width,
                     height: 300,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -273,7 +287,7 @@ class _ScrollViewSampleState extends State<ScrollViewSample> {
                     style: TextStyle(color: Colors.white),
                   ),
                   color: Colors.green,
-                  minWidth: context.width * 0.5,
+                  minWidth: MediaQuery.of(context).size.width * 0.5,
                 ),
               ),
             ),
@@ -281,5 +295,21 @@ class _ScrollViewSampleState extends State<ScrollViewSample> {
         ),
       ),
     );
+  }
+
+  void _getContainerRect() {
+    final ro = _container.currentContext!.findRenderObject()!;
+    final box = (ro as RenderBox);
+    final topLeft = box.localToGlobal(Offset.zero);
+    final bottomRight = topLeft + box.size.bottomRight(Offset.zero);
+    _containerRect = Rect.fromPoints(topLeft, bottomRight);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      _getContainerRect();
+    });
   }
 }
