@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_overlayentry/dropdown_overlayentry.dart';
+import 'package:dropdown_overlayentry/dropdown_overlayentry_animations.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -37,6 +38,7 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   DropdownOverlayEntry(
                     key: _dropdownOverlayEntry,
+                    animation: DropdownOverlayEntryAnimations.dropDown(),
                     triggerBuilder: (context, key, isOpen, toggle) => MaterialButton(
                       key: key,
                       onPressed: () => _dropdownOverlayEntry.currentState!.toggle(),
@@ -94,6 +96,7 @@ class _OptimalDynamicContentState extends State<OptimalDynamicContent> {
   Widget build(BuildContext context) {
     return DropdownOverlayEntry(
       key: _dropdownOverlayParentDynamic,
+      animation: DropdownOverlayEntryAnimations.dropDown(),
       triggerBuilder: (context, key, isOpen, toggle) => SizedBox(
         width: 500,
         child: TextFormField(
@@ -168,6 +171,7 @@ class _AutoDynamicContentState extends State<AutoDynamicContent> {
   Widget build(BuildContext context) {
     return DropdownOverlayEntry(
       isOpen: _focusNode.hasFocus,
+      animation: DropdownOverlayEntryAnimations.fade(),
       triggerBuilder: (context, key, isOpen, toggle) => SizedBox(
         width: 500,
         child: TextFormField(
@@ -257,6 +261,7 @@ class _ScrollViewSampleState extends State<ScrollViewSample> {
               child: DropdownOverlayEntry(
                 scrollController: _scrollController,
                 behindTrigger: true,
+                animation: DropdownOverlayEntryAnimations.fade(),
                 alignment: (buttonRect) {
                   final fromTop = buttonRect.top - _containerRect!.top;
                   if (fromTop < 0) {

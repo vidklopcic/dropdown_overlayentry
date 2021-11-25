@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'event_utils.dart';
+import 'package:dropdown_overlayentry/dropdown_overlayentry_animations.dart';
 
 typedef DropdownOverlayentryButtonBuilder = Widget Function(
     BuildContext context, GlobalKey key, bool isOpen, VoidCallback toggle);
@@ -56,6 +57,8 @@ class DropdownOverlayEntry extends StatefulWidget {
   /// DDOE can be opened either by this value or through it's state.
   final bool? isOpen;
 
+  final DropdownOverlayEntryAnimation? animation;
+
   final bool barrierDismissible;
 
   final Color barrierColor;
@@ -78,6 +81,7 @@ class DropdownOverlayEntry extends StatefulWidget {
     this.behindTrigger = false,
     this.scrollController,
     this.isOpen,
+    this.animation,
   })  : assert(openTriggerAlignment == null || behindTrigger),
         super(key: key);
 
@@ -107,11 +111,13 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
 
   double? _prevScrollOffset;
 
-  bool get isOpen => _isOpen;
+  bool get isOpen => _isOpen && !_isClosing;
+  bool _isClosing = false;
+  bool _justOpened = false;
 
   @override
   Widget build(BuildContext context) {
-    if (widget.isOpen != null && _isOpen != widget.isOpen) {
+    if (widget.isOpen != null && isOpen != widget.isOpen) {
       WidgetsBinding.instance?.addPostFrameCallback((timeStamp) => toggle());
     }
     // this ensures that we rebuild on size changes
@@ -126,18 +132,18 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
 
     _updateTriggerConstraints = false;
 
-    if (!widget.behindTrigger) return widget.triggerBuilder(context, _buttonKey, _isOpen, toggle);
+    if (!widget.behindTrigger) return widget.triggerBuilder(context, _buttonKey, isOpen, toggle);
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final trigger = widget.triggerBuilder(context, _buttonKey, _isOpen, toggle);
+        final trigger = widget.triggerBuilder(context, _buttonKey, isOpen, toggle);
         _triggerConstraints = constraints;
         _trigger = KeyedSubtree(
           key: _triggerTree,
           child: Material(type: MaterialType.transparency, child: trigger),
         );
 
-        if (isOpen)
+        if (_isOpen)
           return SizedBox(
             width: _triggerRect!.width,
             height: _triggerRect!.height,
@@ -248,31 +254,53 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
   }
 
   void toggle() {
-    if (_isOpen)
+    if (isOpen)
       close();
     else
       open();
   }
 
   void open() {
-    if (_isOpen) return;
+    if (isOpen) return;
+    if (_isClosing) {
+      _overlayEntry?.remove();
+      _isClosing = false;
+    }
     _openedStreamController.add(_buttonKey);
     _updatePosition();
     _overlayEntry = OverlayEntry(builder: (context) => _dropdownChild());
     Navigator.of(context, rootNavigator: true).overlay!.insert(_overlayEntry!);
     _isOpen = true;
-
+    if (widget.animation != null) {
+      _justOpened = true;
+      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+        _justOpened = false;
+        _overlayEntry?.markNeedsBuild();
+      });
+    }
     if (mounted) {
       setState(() {});
     }
   }
 
-  void close() {
-    if (!_isOpen) return;
-    _overlayEntry?.remove();
-    _isOpen = false;
+  Future close() async {
+    if (!isOpen) return;
     if (mounted) {
       setState(() {});
+    }
+    if (widget.animation != null) {
+      _isClosing = true;
+      _overlayEntry?.markNeedsBuild();
+      await Future.delayed(widget.animation!.duration);
+      if (_isClosing) {
+        _isOpen = false;
+        _overlayEntry?.remove();
+        _isClosing = false;
+        setState(() {});
+      }
+    } else {
+      _isOpen = false;
+      _overlayEntry?.remove();
     }
   }
 
@@ -331,34 +359,43 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
       triggerAlignmentOffset = widget.openTriggerAlignment!(_triggerRect!);
     }
 
-    Widget child = AnimatedBuilder(
+    // overlay
+    Widget child = GestureDetector(
+      onTap: () {},
+      child: Material(
+        type: MaterialType.transparency,
+        child: widget.dropdownBuilder(context, _buttonRect!),
+      ),
+    );
+
+    // open / close animation
+    if (widget.animation != null) {
+      child = widget.animation!.builder(isOpen && !_justOpened ? child : Offstage());
+    }
+
+    // reposition animation
+    Widget animatedChild = AnimatedBuilder(
       animation: _repositionAnimationController,
-      builder: (context, child) => Stack(
+      builder: (context, _) => Stack(
         children: [
           Positioned(
             top: _repositionAnimation.value.dy,
             left: _repositionAnimation.value.dx,
-            child: GestureDetector(
-              onTap: () {},
-              child: Material(
-                type: MaterialType.transparency,
-                child: widget.dropdownBuilder(context, _buttonRect!),
+            child: child,
+          ),
+          if (widget.behindTrigger)
+            Positioned(
+              top: _triggerRect!.top + triggerAlignmentOffset.dy,
+              left: _triggerRect!.left + triggerAlignmentOffset.dx,
+              child: ConstrainedBox(
+                constraints: _triggerConstraints,
+                child: _trigger,
               ),
             ),
-          ),
-          widget.behindTrigger
-              ? Positioned(
-                  top: _triggerRect!.top + triggerAlignmentOffset.dy,
-                  left: _triggerRect!.left + triggerAlignmentOffset.dx,
-                  child: ConstrainedBox(
-                    constraints: _triggerConstraints,
-                    child: _trigger,
-                  ),
-                )
-              : Offstage()
         ],
       ),
     );
+
     if (widget.barrierDismissible) {
       return GestureDetector(
         onTap: close,
@@ -366,11 +403,11 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
           color: widget.barrierColor,
           width: double.infinity,
           height: double.infinity,
-          child: child,
+          child: animatedChild,
         ),
       );
     } else {
-      return child;
+      return animatedChild;
     }
   }
 
