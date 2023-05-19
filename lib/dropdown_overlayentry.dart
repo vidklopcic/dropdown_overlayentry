@@ -296,7 +296,9 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
         _isOpen = false;
         _overlayEntry?.remove();
         _isClosing = false;
-        setState(() {});
+        if (mounted) {
+          setState(() {});
+        }
       }
     } else {
       _isOpen = false;
