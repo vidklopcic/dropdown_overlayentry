@@ -118,7 +118,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
   @override
   Widget build(BuildContext context) {
     if (widget.isOpen != null && isOpen != widget.isOpen) {
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) => toggle());
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) => toggle());
     }
     // this ensures that we rebuild on size changes
     MediaQuery.of(context);
@@ -134,22 +134,25 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
 
     if (!widget.behindTrigger) return widget.triggerBuilder(context, _buttonKey, isOpen, toggle);
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final trigger = widget.triggerBuilder(context, _buttonKey, isOpen, toggle);
-        _triggerConstraints = constraints;
-        _trigger = KeyedSubtree(
-          key: _triggerTree,
-          child: Material(type: MaterialType.transparency, child: trigger),
-        );
-
-        if (_isOpen)
-          return SizedBox(
-            width: _triggerRect!.width,
-            height: _triggerRect!.height,
+    return PopScope(
+      onPopInvoked: (_) => close(),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final trigger = widget.triggerBuilder(context, _buttonKey, isOpen, toggle);
+          _triggerConstraints = constraints;
+          _trigger = KeyedSubtree(
+            key: _triggerTree,
+            child: Material(type: MaterialType.transparency, child: trigger),
           );
-        return _trigger!;
-      },
+
+          if (_isOpen)
+            return SizedBox(
+              width: _triggerRect!.width,
+              height: _triggerRect!.height,
+            );
+          return _trigger!;
+        },
+      ),
     );
   }
 
@@ -208,7 +211,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
       update = () {
         _updatePosition();
         _overlayEntry?.markNeedsBuild();
-        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           _updatePosition();
           _overlayEntry?.markNeedsBuild();
           if (mounted) {
@@ -223,7 +226,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
     switch (widget.repositionType) {
       case DropdownOverlayEntryRepositionType.debounceAnimate:
         if (widget.repositionDelay == null)
-          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
             update();
           });
         else
@@ -231,14 +234,14 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
         break;
       case DropdownOverlayEntryRepositionType.throttle:
         if (widget.repositionDelay == null)
-          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
             update();
           });
         else
           EventUtils.throttle(widget.repositionDelay!.inMilliseconds, update, key: _buttonKey);
         break;
       case DropdownOverlayEntryRepositionType.always:
-        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           update();
         });
         break;
