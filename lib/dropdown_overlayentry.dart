@@ -175,7 +175,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
   @override
   void dispose() {
     super.dispose();
-    close();
+    _overlayEntry?.remove();
     _otherOpenedSubscription.cancel();
     _closeSubscription.cancel();
     widget.scrollController?.removeListener(_onScroll);
@@ -273,7 +273,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
     _isOpen = true;
     if (widget.animation != null) {
       _justOpened = true;
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         _justOpened = false;
         _overlayEntry?.markNeedsBuild();
       });
