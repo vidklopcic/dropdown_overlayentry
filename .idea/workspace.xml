@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8c16727-27f2-4c57-b01b-046d0cbaecdf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dropdown_overlayentry.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -244,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684480350006</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="directly remove oe in dispose">
+      <created>1705404884270</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1705404884270</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -283,6 +288,7 @@
     <MESSAGE value="cleanup, added scroll support" />
     <MESSAGE value="scroll and reposition demo" />
     <MESSAGE value="fix mounted check" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix mounted check" />
+    <MESSAGE value="directly remove oe in dispose" />
+    <option name="LAST_COMMIT_MESSAGE" value="directly remove oe in dispose" />
   </component>
 </project>

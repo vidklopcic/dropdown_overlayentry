@@ -134,25 +134,22 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
 
     if (!widget.behindTrigger) return widget.triggerBuilder(context, _buttonKey, isOpen, toggle);
 
-    return PopScope(
-      onPopInvoked: (_) => close(),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final trigger = widget.triggerBuilder(context, _buttonKey, isOpen, toggle);
-          _triggerConstraints = constraints;
-          _trigger = KeyedSubtree(
-            key: _triggerTree,
-            child: Material(type: MaterialType.transparency, child: trigger),
-          );
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final trigger = widget.triggerBuilder(context, _buttonKey, isOpen, toggle);
+        _triggerConstraints = constraints;
+        _trigger = KeyedSubtree(
+          key: _triggerTree,
+          child: Material(type: MaterialType.transparency, child: trigger),
+        );
 
-          if (_isOpen)
-            return SizedBox(
-              width: _triggerRect!.width,
-              height: _triggerRect!.height,
-            );
-          return _trigger!;
-        },
-      ),
+        if (_isOpen)
+          return SizedBox(
+            width: _triggerRect!.width,
+            height: _triggerRect!.height,
+          );
+        return _trigger!;
+      },
     );
   }
 
