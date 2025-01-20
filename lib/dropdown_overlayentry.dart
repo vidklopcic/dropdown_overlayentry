@@ -175,7 +175,11 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
   @override
   void dispose() {
     super.dispose();
-    _overlayEntry?.remove();
+    if (_overlayEntry != null) {
+      _isOpen = false;
+      _overlayEntry?.remove();
+      _overlayEntry = null;
+    }
     _otherOpenedSubscription.cancel();
     _closeSubscription.cancel();
     widget.scrollController?.removeListener(_onScroll);
@@ -264,6 +268,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
     if (isOpen) return;
     if (_isClosing) {
       _overlayEntry?.remove();
+      _overlayEntry = null;
       _isClosing = false;
     }
     _openedStreamController.add(_buttonKey);
@@ -295,6 +300,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
       if (_isClosing) {
         _isOpen = false;
         _overlayEntry?.remove();
+        _overlayEntry = null;
         _isClosing = false;
         if (mounted) {
           setState(() {});
@@ -303,6 +309,7 @@ class DropdownOverlayEntryState extends State<DropdownOverlayEntry>
     } else {
       _isOpen = false;
       _overlayEntry?.remove();
+      _overlayEntry = null;
     }
   }
 
